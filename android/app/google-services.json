@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "785361212230",
+    "firebase_url": "https://meu-bmg.firebaseio.com",
+    "project_id": "meu-bmg",
+    "storage_bucket": "meu-bmg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:785361212230:android:aace72f135996eb71f0b47",
+        "android_client_info": {
+          "package_name": "com.nicholashopf.meubmg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "785361212230-odd9uoo1a9paaum2437so9pqugj5nrih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2TF0njDe2cjF4gdYAhwAVPXE3uVh9CSw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "785361212230-odd9uoo1a9paaum2437so9pqugj5nrih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
