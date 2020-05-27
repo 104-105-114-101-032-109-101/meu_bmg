@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:meubmg/screens/login.dart';
 
-class PginaInicial1 extends StatelessWidget {
-  PginaInicial1({
-    Key key,
-  }) : super(key: key);
+class PginaInicial1 extends StatefulWidget {
+  @override
+  _PaginaInicial1State createState() => _PaginaInicial1State();
+}
+
+class _PaginaInicial1State extends State<PginaInicial1> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -275,12 +278,21 @@ class PginaInicial1 extends StatelessWidget {
               offset: Offset(7.0, 7.0),
               child:
               // Adobe XD layer: 'Quadrado acesso men…' (shape)
-              Container(
-                width: 6.0,
-                height: 6.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1.0),
-                  color: const Color(0xffffffff),
+              new GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Authenticate()),
+                  );
+                },
+                child: new Container(
+                  width: 6.0,
+                  height: 6.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(1.0),
+                    color: const Color(0xffffffff),
+                  ),
                 ),
               ),
             ),

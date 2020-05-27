@@ -40,18 +40,17 @@ class _AuthenticateState extends State<Authenticate> {
               offset: Offset(56.0, 440.0),
               child:
               // Adobe XD layer: 'Botao acesso 1' (shape)
-              Container(
-                width: 250.0,
-                height: 45.0,
-                child: RaisedButton(
-                  onPressed: () {
+              new GestureDetector(
+                  onTap: (){
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => PginaInicial1()),
                     );
                   },
-                ),
+                  child: new Container(
+                width: 250.0,
+                height: 45.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xfffca33c),
@@ -62,24 +61,23 @@ class _AuthenticateState extends State<Authenticate> {
                         blurRadius: 11)
                   ],
                 ),
-              ),
+              )),
             ),
             Transform.translate(
               offset: Offset(56.0, 500.0),
               child:
               // Adobe XD layer: 'Botao acesso 2' (shape)
-              Container(
-                width: 250.0,
-                height: 43.0,
-                child: RaisedButton(
-                  onPressed: () {
+              new GestureDetector(
+                  onTap: (){
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => PginaInicial1()),
                     );
                   },
-                ),
+                  child: new Container(
+                width: 250.0,
+                height: 43.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20.0),
                   color: const Color(0xffffffff),
@@ -90,13 +88,21 @@ class _AuthenticateState extends State<Authenticate> {
                         blurRadius: 11)
                   ],
                 ),
-              ),
+              )),
             ),
             Transform.translate(
               offset: Offset(123.0, 452.0),
               child:
               // Adobe XD layer: '"Seja um cliente"' (text)
-              SizedBox(
+              new GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PginaInicial1()),
+                  );
+                },
+                child: new SizedBox(
                 width: 117.0,
                 height: 17.0,
                 child: SingleChildScrollView(
@@ -109,7 +115,7 @@ class _AuthenticateState extends State<Authenticate> {
                       ),
                       textAlign: TextAlign.left,
                     )),
-              ),
+              ),),
             ),
             Transform.translate(
               offset: Offset(152.0, 511.0),
@@ -119,7 +125,15 @@ class _AuthenticateState extends State<Authenticate> {
                 width: 52.0,
                 height: 17.0,
                 child: SingleChildScrollView(
-                    child: Text(
+                    child: new GestureDetector(
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PginaInicial1()),
+                        );
+                      },
+                      child: new Text(
                       'Entrar',
                       style: TextStyle(
                         fontFamily: 'Ubuntu',
@@ -127,7 +141,7 @@ class _AuthenticateState extends State<Authenticate> {
                         color: const Color(0xfffca33c),
                       ),
                       textAlign: TextAlign.left,
-                    )),
+                    ),),),
               ),
             ),
             // Adobe XD layer: 'LOGO_BMG 2' (shape)
