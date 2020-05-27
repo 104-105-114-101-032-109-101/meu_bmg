@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:meubmg/screens/goals.dart';
 import 'package:meubmg/screens/login.dart';
 
 class PginaInicial1 extends StatefulWidget {
@@ -28,60 +29,90 @@ class _PaginaInicial1State extends State<PginaInicial1> {
               offset: Offset(80.0, 325.0),
               child:
               // Adobe XD layer: 'Acompanhamentos' (shape)
-              Container(
-                width: 75.0,
-                height: 75.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  color: const Color(0xffff8f00),
+              new GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Authenticate()),
+                  );
+                },
+                child: new Container(
+                  width: 75.0,
+                  height: 75.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: const Color(0xffff8f00),
+                  ),
                 ),
               ),
             ),
             Transform.translate(
               offset: Offset(205.0, 325.0),
               child:
-              // Adobe XD layer: 'Acompanhamentos' (shape)
-              Container(
-                width: 75.0,
-                height: 75.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  color: const Color(0xffff8f00),
-                  border: Border.all(width: 1.0, color: const Color(0xffff8f00)),
+              // Adobe XD layer: 'Metas' (shape)
+              new GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Goals()),
+                  );
+                },
+                child: new Container(
+                  width: 75.0,
+                  height: 75.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: const Color(0xffff8f00),
+                    border: Border.all(width: 1.0, color: const Color(0xffff8f00)),
+                  ),
                 ),
               ),
             ),
             Transform.translate(
-              offset: Offset(190.0, 440.0),
+              offset: Offset(205.0, 440.0),
               child:
-                FlatButton(
-                  onPressed: () {
-                    print("CU");
-                    //Navigator.push(context, MaterialPageRoute(builder: (context) => SecondRoute()));
-                  },
-                  child:
-                  // Adobe XD layer: 'Acompanhamentos' (shape)
-                  Container(
-                    width: 75.0,
-                    height: 75.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5.0),
-                      color: const Color(0xffff8f00),
-                      border: Border.all(width: 1.0, color: const Color(0xffff8f00)),
-                    ),
+              // Adobe XD layer: 'Noticias' (shape)
+              new GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Authenticate()),
+                  );
+                },
+                child: new Container(
+                  width: 75.0,
+                  height: 75.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: const Color(0xffff8f00),
+                    border: Border.all(width: 1.0, color: const Color(0xffff8f00)),
                   ),
                 ),
+              ),
             ),
             Transform.translate(
               offset: Offset(80.0, 440.0),
               child:
-              // Adobe XD layer: 'Acompanhamentos' (shape)
-              Container(
-                width: 75.0,
-                height: 75.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  color: const Color(0xffff8f00),
+              // Adobe XD layer: 'Aprendizado' (shape)
+              new GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Authenticate()),
+                  );
+                },
+                child: new Container(
+                  width: 75.0,
+                  height: 75.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: const Color(0xffff8f00),
+                  ),
                 ),
               ),
             ),

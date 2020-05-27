@@ -125,15 +125,15 @@ class _AuthenticateState extends State<Authenticate> {
                 width: 52.0,
                 height: 17.0,
                 child: SingleChildScrollView(
-                    child: new GestureDetector(
-                      onTap: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PginaInicial1()),
-                        );
-                      },
-                      child: new Text(
+                  child: new GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PginaInicial1()),
+                      );
+                    },
+                    child: new Text(
                       'Entrar',
                       style: TextStyle(
                         fontFamily: 'Ubuntu',
@@ -141,7 +141,9 @@ class _AuthenticateState extends State<Authenticate> {
                         color: const Color(0xfffca33c),
                       ),
                       textAlign: TextAlign.left,
-                    ),),),
+                    ),
+                  ),
+                ),
               ),
             ),
             // Adobe XD layer: 'LOGO_BMG 2' (shape)
