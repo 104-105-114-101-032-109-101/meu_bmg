@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:meubmg/screens/goals.dart';
+import 'package:meubmg/screens/learning.dart';
 import 'package:meubmg/screens/login.dart';
+import 'package:meubmg/screens/news.dart';
+import 'package:meubmg/screens/progress.dart';
 
 class PginaInicial1 extends StatefulWidget {
   @override
@@ -15,8 +18,11 @@ class _PaginaInicial1State extends State<PginaInicial1> {
       child:
       Scaffold(
         backgroundColor: const Color(0xffffffff),
-        body: Stack(
-          children: <Widget>[
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Stack(
+            children: <Widget>[
             // Adobe XD layer: 'Barra superior' (shape)
             Container(
               width: 360.0,
@@ -30,11 +36,12 @@ class _PaginaInicial1State extends State<PginaInicial1> {
               child:
               // Adobe XD layer: 'Acompanhamentos' (shape)
               new GestureDetector(
+                behavior: HitTestBehavior.translucent,
                 onTap: (){
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Authenticate()),
+                        builder: (context) => Progress()),
                   );
                 },
                 child: new Container(
@@ -52,6 +59,7 @@ class _PaginaInicial1State extends State<PginaInicial1> {
               child:
               // Adobe XD layer: 'Metas' (shape)
               new GestureDetector(
+                behavior: HitTestBehavior.translucent,
                 onTap: (){
                   Navigator.push(
                     context,
@@ -75,11 +83,12 @@ class _PaginaInicial1State extends State<PginaInicial1> {
               child:
               // Adobe XD layer: 'Noticias' (shape)
               new GestureDetector(
+                behavior: HitTestBehavior.translucent,
                 onTap: (){
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Authenticate()),
+                        builder: (context) => News()),
                   );
                 },
                 child: new Container(
@@ -98,12 +107,12 @@ class _PaginaInicial1State extends State<PginaInicial1> {
               child:
               // Adobe XD layer: 'Aprendizado' (shape)
               new GestureDetector(
-                behavior: HitTestBehavior.opaque,
+                behavior: HitTestBehavior.translucent,
                 onTap: (){
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => Authenticate()),
+                        builder: (context) => Learning()),
                   );
                 },
                 child: new Container(
@@ -181,13 +190,17 @@ class _PaginaInicial1State extends State<PginaInicial1> {
                 ),
               ),
             ),
-            Transform.translate(
-              offset: Offset(95.0, 401.0),
-              child:
-              // Adobe XD layer: 'quality' (group)
-              SvgPicture.string(
-                _shapeSVG_4819c733c5344a86ae3565465bec2f09,
-                allowDrawingOutsideViewBox: true,
+            // Allow me to click trough the svg
+            IgnorePointer(
+              ignoring: false,
+              child: Transform.translate(
+                offset: Offset(95.0, 401.0),
+                child:
+                // Adobe XD layer: 'quality' (group)
+                SvgPicture.string(
+                  _shapeSVG_4819c733c5344a86ae3565465bec2f09,
+                  allowDrawingOutsideViewBox: true,
+                ),
               ),
             ),
             Transform.translate(
@@ -310,6 +323,7 @@ class _PaginaInicial1State extends State<PginaInicial1> {
               child:
               // Adobe XD layer: 'Quadrado acesso men…' (shape)
               new GestureDetector(
+                behavior: HitTestBehavior.translucent,
                 onTap: (){
                   Navigator.push(
                     context,
@@ -430,8 +444,8 @@ class _PaginaInicial1State extends State<PginaInicial1> {
                   color: const Color(0xffffffff),
                 ),
               ),
-            ),
-          ],
+            ),],
+          ),
         ),
       )
     );

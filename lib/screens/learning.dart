@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:meubmg/screens/login.dart';
 
-class Goals extends StatefulWidget {
+class Learning extends StatefulWidget {
   @override
-  _GoalsState createState() => _GoalsState();
+  _LearningState createState() => _LearningState();
 }
 
-class _GoalsState extends State<Goals> {
+class _LearningState extends State<Learning> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,7 +46,7 @@ class _GoalsState extends State<Goals> {
                   child:
                   // Adobe XD layer: '"+"' (text)
                   SizedBox(
-                    width: 60.0,
+                    width: 14.0,
                     height: 14.0,
                     child: SingleChildScrollView(
                         child: Text(

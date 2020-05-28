@@ -49,19 +49,20 @@ class _AuthenticateState extends State<Authenticate> {
                     );
                   },
                   child: new Container(
-                width: 250.0,
-                height: 45.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.0),
-                  color: const Color(0xfffca33c),
-                  boxShadow: [
-                    BoxShadow(
-                        color: const Color(0x66000000),
-                        offset: Offset(2, 8),
-                        blurRadius: 11)
-                  ],
-                ),
-              )),
+                    width: 250.0,
+                    height: 45.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: const Color(0xfffca33c),
+                      boxShadow: [
+                        BoxShadow(
+                            color: const Color(0x66000000),
+                            offset: Offset(2, 8),
+                            blurRadius: 11)
+                      ],
+                    ),
+                  )
+              ),
             ),
             Transform.translate(
               offset: Offset(56.0, 500.0),
