@@ -26,12 +26,12 @@ class _AuthenticateState extends State<Authenticate> {
                 child: Carousel(
                   images: [
                     ExactAssetImage('assets/images/login-back-2.jpg'),
-                    //ExactAssetImage('assets/images/login-back-3.jpg'),
+                    ExactAssetImage('assets/images/login-back-3.jpg'),
                   ],
-                  //autoplay: true,
-                  //autoplayDuration: Duration(milliseconds: 3800),
-                  //animationCurve: Curves.ease,
-                  //animationDuration: Duration(milliseconds: 300),
+                  autoplay: true,
+                  autoplayDuration: Duration(milliseconds: 3800),
+                  animationCurve: Curves.ease,
+                  animationDuration: Duration(milliseconds: 300),
                   showIndicator: false,
                 ),
               ),
