@@ -12,19 +12,21 @@ class _SuitabilityState extends State<Suitability> {
   int _radioValue = -1;
   int _questionNumber = 0;
   List <int> _radioValues = [];
+  double level = 0;
+  List<List<String>> content = [["Qual a sua faixa etária?", "18-23 anos", "24-29 anos", "30-35 anos", "35+ anos"],
+    ["Atualmente, você tem fonte de renda própria?", "Sim", "Não"],
+    ["Seus hábitos de controle de gastos são:", "Bem planejados. Controlo e conheço todos os meus gastos", "Organizados na maior parte do tempo, mas às vezes fujo do planejamento", "Não tenho nenhum método para controlar e planejar minhas despesas"],
+    ["Suponha que você tem R\$100 investidos num fundo, rendendo 2% ao ano. Depois de 5 anos, quanto dinheiro você terá neste fundo?", "Mais que R\$102", "Exatamente R\$102", "Menos que R\$102", "Não sei"],
+    ["Imagine que a sua poupança rende 1% ao ano e a inflação anual é de 2%. Daqui a um ano, o dinheiro que você tem na conta vai valer:", "Mais do que vale hoje", "O mesmo que vale hoje", "Menos do que vale hoje", "Não sei"],
+    ["Quando há uma redução da taxa Selic, os rendimentos da poupança e do tesouro direto:", "Aumentam", "Diminuem", "Não sei"],
+    ["Um produto parcelado em 15 meses tem prestações mais caras do que um produto parcelado em 30 meses, mas a taxa de juros costuma ser menor quando há menos parcelas.", "Verdadeiro", "Falso", "Não sei"],
+    ["Suponha que você tem uma dívida de R\$1.000 com taxa de juros composta de 20% ao ano. Se você não pagar a dívida, quantos anos serão necessários para que sua dívida duplique?", "Menos de 2 anos", "De 2 a 4 anos", "De 5 a 9 anos", "Não sei"],];
+  List<List<int>> scores = [[-1,0,0,0],[3,-1],[2,1,-2],[0,-2,-2,-1],[-1,-1,1,0],[-1,2,0],[1,-2,-1],[0,2,-1,0]];
 
   void _handleRadioValueChange(int value) {setState(() {_radioValue = value;});}
 
   @override
   Widget build(BuildContext context) {
-    List<List<String>> content = [["Qual a sua faixa etária?", "18-23 anos", "24-29 anos", "30-35 anos", "35+ anos"],
-                                  ["Atualmente, você tem fonte de renda própria?", "Sim", "Não"],
-                                  ["Seus hábitos de controle de gastos são:", "Bem planejados. Controlo e conheço todos os meus gastos", "Organizados na maior parte do tempo, mas às vezes fujo do planejamento", "Não tenho nenhum método para controlar e planejar minhas despesas"],
-                                  ["Suponha que você tem R\$100 investidos num fundo, rendendo 2% ao ano. Depois de 5 anos, quanto dinheiro você terá neste fundo?", "Mais que R\$102", "Exatamente R\$102", "Menos que R\$102", "Não sei"],
-                                  ["Imagine que a sua poupança rende 1% ao ano e a inflação anual é de 2%. Daqui a um ano, o dinheiro que você tem na conta vai valer:", "Mais do que vale hoje", "O mesmo que vale hoje", "Menos do que vale hoje", "Não sei"],
-                                  ["Quando há uma redução da taxa Selic, os rendimentos da poupança e do tesouro direto:", "Aumentam", "Diminuem", "Não sei"],
-                                  ["Um produto parcelado em 15 meses tem prestações mais caras do que um produto parcelado em 30 meses, mas a taxa de juros costuma ser menor quando há menos parcelas.", "Verdadeiro", "Falso", "Não sei"],
-                                  ["Suponha que você tem uma dívida de R\$1.000 com taxa de juros composta de 20% ao ano. Se você não pagar a dívida, quantos anos serão necessários para que sua dívida duplique?", "Menos de 2 anos", "De 2 a 4 anos", "De 5 a 9 anos", "Não sei"],];
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return
@@ -118,10 +120,13 @@ class _SuitabilityState extends State<Suitability> {
       Fluttertoast.showToast(msg: 'Selecione uma resposta',
       toastLength: Toast.LENGTH_SHORT);
     } else {
+      level += scores[_questionNumber][_radioValue-1];
       _radioValues.add(_radioValue);
       _questionNumber += 1;
       if (_questionNumber == lastQuestionIndex) {
         print(_radioValues); // TODO: Send values to database
+        level = 3*(level+11)/22;
+        print("Final level: $level");
         Navigator.push(
           context, MaterialPageRoute(builder: (context) => PginaInicial1()),
         );

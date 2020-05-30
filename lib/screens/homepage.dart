@@ -319,130 +319,18 @@ class _PaginaInicial1State extends State<PginaInicial1> {
               ),
             ),
             Transform.translate(
-              offset: Offset(7.0, 7.0),
-              child:
-              // Adobe XD layer: 'Quadrado acesso men…' (shape)
-              new GestureDetector(
-                behavior: HitTestBehavior.translucent,
-                onTap: (){
+              offset: Offset(-8.0, -8.0),
+              child: IconButton( // TODO: replace with drawer (side menu)
+                icon: Icon(Icons.apps),
+                color: Colors.white,
+                iconSize: 35,
+                onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => Authenticate()),
                   );
                 },
-                child: new Container(
-                  width: 6.0,
-                  height: 6.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(1.0),
-                    color: const Color(0xffffffff),
-                  ),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(16.0, 7.0),
-              child:
-              // Adobe XD layer: 'Quadrado acesso men…' (shape)
-              Container(
-                width: 6.0,
-                height: 6.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1.0),
-                  color: const Color(0xffffffff),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(25.0, 7.0),
-              child:
-              // Adobe XD layer: 'Quadrado acesso men…' (shape)
-              Container(
-                width: 6.0,
-                height: 6.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1.0),
-                  color: const Color(0xffffffff),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(25.0, 16.0),
-              child:
-              // Adobe XD layer: 'Quadrado acesso men…' (shape)
-              Container(
-                width: 6.0,
-                height: 6.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1.0),
-                  color: const Color(0xffffffff),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(16.0, 16.0),
-              child:
-              // Adobe XD layer: 'Quadrado acesso men…' (shape)
-              Container(
-                width: 6.0,
-                height: 6.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1.0),
-                  color: const Color(0xffffffff),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(7.0, 16.0),
-              child:
-              // Adobe XD layer: 'Quadrado acesso men…' (shape)
-              Container(
-                width: 6.0,
-                height: 6.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1.0),
-                  color: const Color(0xffffffff),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(7.0, 25.0),
-              child:
-              // Adobe XD layer: 'Quadrado acesso men…' (shape)
-              Container(
-                width: 6.0,
-                height: 6.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1.0),
-                  color: const Color(0xffffffff),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(16.0, 25.0),
-              child:
-              // Adobe XD layer: 'Quadrado acesso men…' (shape)
-              Container(
-                width: 6.0,
-                height: 6.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1.0),
-                  color: const Color(0xffffffff),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(25.0, 25.0),
-              child:
-              // Adobe XD layer: 'Quadrado acesso men…' (shape)
-              Container(
-                width: 6.0,
-                height: 6.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1.0),
-                  color: const Color(0xffffffff),
-                ),
               ),
             ),],
           ),
