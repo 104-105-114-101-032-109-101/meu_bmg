@@ -2,16 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:meubmg/screens/goals.dart';
 import 'package:meubmg/screens/learning.dart';
-import 'package:meubmg/screens/login.dart';
 import 'package:meubmg/screens/news.dart';
 import 'package:meubmg/screens/progress.dart';
+import 'package:meubmg/screens/authentication/firebase-auth.dart';
 
-class PginaInicial1 extends StatefulWidget {
-  @override
-  _PaginaInicial1State createState() => _PaginaInicial1State();
-}
-
-class _PaginaInicial1State extends State<PginaInicial1> {
+class PginaInicial1 extends StatelessWidget {
+  final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -324,13 +320,7 @@ class _PaginaInicial1State extends State<PginaInicial1> {
                 icon: Icon(Icons.apps),
                 color: Colors.white,
                 iconSize: 35,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Authenticate()),
-                  );
-                },
+                onPressed: () async { await _auth.signOut(); },
               ),
             ),],
           ),

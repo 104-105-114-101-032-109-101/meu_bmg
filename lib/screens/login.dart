@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:meubmg/screens/homepage.dart';
+import 'package:meubmg/screens/authentication/register.dart';
+import 'package:meubmg/screens/authentication/signin.dart';
 
 class Authenticate extends StatefulWidget {
   @override
@@ -23,16 +24,20 @@ class _AuthenticateState extends State<Authenticate> {
               Container(
                 width: 900.0,
                 height: 640.0,
-                child: Carousel(
-                  images: [
-                    ExactAssetImage('assets/images/login-back-2.jpg'),
-                    ExactAssetImage('assets/images/login-back-3.jpg'),
-                  ],
-                  autoplay: true,
-                  autoplayDuration: Duration(milliseconds: 3800),
-                  animationCurve: Curves.ease,
-                  animationDuration: Duration(milliseconds: 300),
-                  showIndicator: false,
+                child:
+                IgnorePointer(
+                  ignoring: true,
+                  child: Carousel(
+                    images: [
+                      ExactAssetImage('assets/images/login-back-2.jpg'),
+                      ExactAssetImage('assets/images/login-back-4.jpg'),
+                    ],
+                    autoplay: true,
+                    autoplayDuration: Duration(milliseconds: 3800),
+                    animationCurve: Curves.ease,
+                    animationDuration: Duration(milliseconds: 300),
+                    showIndicator: false,
+                  ),
                 ),
               ),
             ),
@@ -42,10 +47,10 @@ class _AuthenticateState extends State<Authenticate> {
               // Adobe XD layer: 'Botao acesso 1' (shape)
               new GestureDetector(
                   onTap: (){
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => PginaInicial1()),
+                          builder: (context) => Register()),
                     );
                   },
                   child: new Container(
@@ -70,10 +75,10 @@ class _AuthenticateState extends State<Authenticate> {
               // Adobe XD layer: 'Botao acesso 2' (shape)
               new GestureDetector(
                   onTap: (){
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => PginaInicial1()),
+                          builder: (context) => SignIn()),
                     );
                   },
                   child: new Container(
@@ -97,10 +102,10 @@ class _AuthenticateState extends State<Authenticate> {
               // Adobe XD layer: '"Seja um cliente"' (text)
               new GestureDetector(
                 onTap: (){
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => PginaInicial1()),
+                        builder: (context) => Register()),
                   );
                 },
                 child: new SizedBox(
@@ -128,10 +133,10 @@ class _AuthenticateState extends State<Authenticate> {
                 child: SingleChildScrollView(
                   child: new GestureDetector(
                     onTap: (){
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => PginaInicial1()),
+                            builder: (context) => SignIn()),
                       );
                     },
                     child: new Text(

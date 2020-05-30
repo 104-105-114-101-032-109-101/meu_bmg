@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:meubmg/bmg_fonts_icons.dart';
+import 'package:meubmg/screens/homepage.dart';
 import 'package:meubmg/screens/login.dart';
+import 'authentication/firebase-auth.dart';
 
 class Progress extends StatefulWidget {
   @override
@@ -7,12 +11,89 @@ class Progress extends StatefulWidget {
 }
 
 class _ProgressState extends State<Progress> {
+  GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+  final AuthService _auth = AuthService();
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child:
         Scaffold(
+          key: _drawerKey,
           backgroundColor: const Color(0xffffffff),
+          drawer:
+          Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                Container(
+                  height: 38.0,
+                  child: DrawerHeader(
+                    decoration: BoxDecoration(color: const Color(0xffff8f00)),
+                    margin: EdgeInsets.all(0.0),
+                    padding: EdgeInsets.all(0.0),
+                    child: Center( child: Text( 'Configurações', textAlign: TextAlign.left, style: TextStyle(color: Colors.white, fontSize: 20),),),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.subject),
+                  title: Text('Sobre o app'),
+                  onTap: () {
+                    Fluttertoast.showToast(msg: 'Protótipo hackathon BMG', toastLength: Toast.LENGTH_SHORT);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: Text('Sair'),
+                  onTap: () async {
+                    await _auth.signOut();
+                    Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => Authenticate()));
+                  },
+                ),
+              ],
+            ),
+          ),
+          bottomNavigationBar:
+          new Theme(
+            data: Theme.of(context).copyWith(
+              canvasColor: const Color(0xffff8f00),
+              textTheme: Theme.of(context).textTheme.copyWith(caption: new TextStyle(color: Colors.white))
+            ),
+            child: BottomNavigationBar(
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(BmgFonts.statistics),
+                  title: Text("")
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(BmgFonts.goals),
+                  title: Text("")
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.radio_button_checked),
+                  title: Text("")
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(BmgFonts.book_edu),
+                  title: Text("")
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(BmgFonts.newspaper),
+                  title: Text("")
+                ),
+              ],
+              currentIndex: _selectedIndex,
+              selectedItemColor: Colors.black,
+              onTap: _onItemTapped,
+            ),
+          ),
           body: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
@@ -63,17 +144,12 @@ class _ProgressState extends State<Progress> {
               ),
               Transform.translate(
                 offset: Offset(-8.0, -8.0),
-                child: IconButton( // TODO: replace with drawer (side menu)
+                child:
+                IconButton( // TODO: replace with drawer (side menu)
                   icon: Icon(Icons.apps),
                   color: Colors.white,
                   iconSize: 35,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Authenticate()),
-                    );
-                  },
+                  onPressed: () { _drawerKey.currentState.openDrawer(); },
                 ),
               ),],
             ),
