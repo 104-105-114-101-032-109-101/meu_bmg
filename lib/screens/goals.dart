@@ -16,7 +16,7 @@ class Goals extends StatefulWidget {
 class _GoalsState extends State<Goals> {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
   final AuthService _auth = AuthService();
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {
