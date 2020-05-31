@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
+import 'authentication/database.dart';
+import 'package:meubmg/models/user.dart';
 import 'homepage.dart';
 
 class Suitability extends StatefulWidget {
@@ -27,6 +30,7 @@ class _SuitabilityState extends State<Suitability> {
 
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<User>(context);
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return
@@ -101,7 +105,7 @@ class _SuitabilityState extends State<Suitability> {
                           child: IconButton(
                             icon: Icon(Icons.arrow_forward_ios),
                             color: Colors.white,
-                            onPressed: () {nextQuestion(content.length);},
+                            onPressed: () {nextQuestion(content.length, user);},
                           ),
                         ),
                       ),
@@ -115,7 +119,7 @@ class _SuitabilityState extends State<Suitability> {
       );
   }
 
-  void nextQuestion(lastQuestionIndex) {
+  void nextQuestion(lastQuestionIndex, user) async {
     if (_radioValue == -1) {
       Fluttertoast.showToast(msg: 'Selecione uma resposta',
       toastLength: Toast.LENGTH_SHORT);
@@ -124,9 +128,8 @@ class _SuitabilityState extends State<Suitability> {
       _radioValues.add(_radioValue);
       _questionNumber += 1;
       if (_questionNumber == lastQuestionIndex) {
-        print(_radioValues); // TODO: Send values to database
         level = 3*(level+11)/22;
-        print("Final level: $level");
+        await DatabaseService(uid: user.uid).updateLevel(level);
         Navigator.push(
           context, MaterialPageRoute(builder: (context) => PginaInicial1()),
         );

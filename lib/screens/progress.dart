@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:meubmg/bmg_fonts_icons.dart';
+import 'package:meubmg/screens/goals.dart';
 import 'package:meubmg/screens/homepage.dart';
+import 'package:meubmg/screens/learning.dart';
 import 'package:meubmg/screens/login.dart';
+import 'package:meubmg/screens/news.dart';
 import 'authentication/firebase-auth.dart';
 
 class Progress extends StatefulWidget {
@@ -19,6 +22,22 @@ class _ProgressState extends State<Progress> {
     setState(() {
       _selectedIndex = index;
     });
+    switch(index){
+      case 0:
+        break;
+      case 1:
+        Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => Goals()));
+        break;
+      case 2:
+        Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => PginaInicial1()));
+        break;
+      case 3:
+        Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => Learning()));
+        break;
+      case 4:
+        Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => News()));
+        break;
+    }
   }
 
   @override
@@ -41,6 +60,13 @@ class _ProgressState extends State<Progress> {
                     padding: EdgeInsets.all(0.0),
                     child: Center( child: Text( 'Configurações', textAlign: TextAlign.left, style: TextStyle(color: Colors.white, fontSize: 20),),),
                   ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.home),
+                  title: Text('Página inicial'),
+                  onTap: () {
+                    Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => PginaInicial1()));
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.subject),
@@ -86,11 +112,11 @@ class _ProgressState extends State<Progress> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(BmgFonts.newspaper),
-                  title: Text("")
+                  title: Text(""),
                 ),
               ],
               currentIndex: _selectedIndex,
-              selectedItemColor: Colors.black,
+              selectedItemColor: Colors.white,
               onTap: _onItemTapped,
             ),
           ),
@@ -145,7 +171,7 @@ class _ProgressState extends State<Progress> {
               Transform.translate(
                 offset: Offset(-8.0, -8.0),
                 child:
-                IconButton( // TODO: replace with drawer (side menu)
+                IconButton(
                   icon: Icon(Icons.apps),
                   color: Colors.white,
                   iconSize: 35,

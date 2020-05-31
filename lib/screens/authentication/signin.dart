@@ -47,7 +47,7 @@ class _SignInState extends State<SignIn> {
                   ),
                   validator: (val) => val.isEmpty ? 'Digite o seu endereço de email' : null,
                   onChanged: (val) {
-                    setState(() => email = val);
+                    setState(() => email = val.trim());
                   },
                 ),
                 SizedBox(height: 20.0),
@@ -58,7 +58,7 @@ class _SignInState extends State<SignIn> {
                   obscureText: true,
                   validator: (val) => val.length < 6 ? 'Digite uma senha válida' : null,
                   onChanged: (val) {
-                    setState(() => password = val);
+                    setState(() => password = val.trim());
                   },
                 ),
                 SizedBox(height: 20.0),

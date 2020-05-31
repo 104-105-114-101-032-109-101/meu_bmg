@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meubmg/screens/authentication/signin.dart';
 import 'package:meubmg/screens/homepage.dart';
+import 'package:meubmg/screens/suitability.dart';
 import 'firebase-auth.dart';
 
 class Register extends StatefulWidget {
@@ -68,7 +69,7 @@ class _RegisterState extends State<Register> {
                   obscureText: true,
                   validator: (val) => val.length < 6 ? 'Digite uma senha com pelo menos 6 caracteres' : null,
                   onChanged: (val) {
-                    setState(() => password = val);
+                    setState(() => password = val.trim());
                   },
                 ),
                 SizedBox(height: 20.0),
@@ -81,10 +82,10 @@ class _RegisterState extends State<Register> {
                     ),
                     onPressed: () async {
                       if(_formKey.currentState.validate()){
-                        dynamic result = await _auth.registerWithEmailAndPassword(email, password);
+                        dynamic result = await _auth.registerWithEmailAndPassword(name, email, password);
                         setState(() {
                           if (result == null) { error = 'Por favor, digite credenciais válidas'; }
-                          else { Navigator.pushReplacement(context, MaterialPageRoute( builder: (context) => PginaInicial1()),); }
+                          else { Navigator.pushReplacement(context, MaterialPageRoute( builder: (context) => Suitability()),); }
                         });
                       }
                     }

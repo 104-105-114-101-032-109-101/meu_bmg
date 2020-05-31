@@ -1,19 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:meubmg/screens/goals.dart';
 import 'package:meubmg/screens/learning.dart';
 import 'package:meubmg/screens/news.dart';
 import 'package:meubmg/screens/progress.dart';
 import 'package:meubmg/screens/authentication/firebase-auth.dart';
+import 'login.dart';
 
 class PginaInicial1 extends StatelessWidget {
+  GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child:
       Scaffold(
+        key: _drawerKey,
         backgroundColor: const Color(0xffffffff),
+          drawer:
+          Drawer(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                Container(
+                  height: 38.0,
+                  child: DrawerHeader(
+                    decoration: BoxDecoration(color: const Color(0xffff8f00)),
+                    margin: EdgeInsets.all(0.0),
+                    padding: EdgeInsets.all(0.0),
+                    child: Center( child: Text( 'Configurações', textAlign: TextAlign.left, style: TextStyle(color: Colors.white, fontSize: 20),),),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.subject),
+                  title: Text('Sobre o app'),
+                  onTap: () {
+                    Fluttertoast.showToast(msg: 'Protótipo hackathon BMG', toastLength: Toast.LENGTH_SHORT);
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.exit_to_app),
+                  title: Text('Sair'),
+                  onTap: () async {
+                    await _auth.signOut();
+                    Navigator.pushReplacement( context, MaterialPageRoute(builder: (context) => Authenticate()));
+                  },
+                ),
+              ],
+            ),
+          ),
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -316,11 +352,12 @@ class PginaInicial1 extends StatelessWidget {
             ),
             Transform.translate(
               offset: Offset(-8.0, -8.0),
-              child: IconButton( // TODO: replace with drawer (side menu)
+              child:
+              IconButton(
                 icon: Icon(Icons.apps),
                 color: Colors.white,
                 iconSize: 35,
-                onPressed: () async { await _auth.signOut(); },
+                onPressed: () { _drawerKey.currentState.openDrawer(); },
               ),
             ),],
           ),
