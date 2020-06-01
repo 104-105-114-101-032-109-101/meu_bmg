@@ -7,6 +7,7 @@ import 'package:meubmg/screens/learning.dart';
 import 'package:meubmg/screens/login.dart';
 import 'package:meubmg/screens/news.dart';
 import 'authentication/firebase-auth.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 class Progress extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class Progress extends StatefulWidget {
 class _ProgressState extends State<Progress> {
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
   final AuthService _auth = AuthService();
+  dynamic seriesList = _getTransactions();
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -177,10 +179,107 @@ class _ProgressState extends State<Progress> {
                   iconSize: 35,
                   onPressed: () { _drawerKey.currentState.openDrawer(); },
                 ),
-              ),],
+              ),
+              Container(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(height: 38),
+                    Expanded(
+                        child: ListView(
+                          padding: const EdgeInsets.all(12),
+                          children: <Widget>[
+                            SizedBox(height: 22),
+                            GestureDetector(
+                              onTap: (){
+                                Fluttertoast.showToast(msg: 'Função não implementada', toastLength: Toast.LENGTH_SHORT);},
+                              child: Container(
+                                width: 290.0,
+                                height: 163.0,
+                                child:
+                                  new charts.BarChart( this.seriesList, ),
+                              )
+                            ),
+                            SizedBox(height: 22),
+                            GestureDetector(
+                                onTap: (){
+                                  Fluttertoast.showToast(msg: 'Função não implementada', toastLength: Toast.LENGTH_SHORT);},
+                                child:
+                                Container(
+                                  width: 290.0,
+                                  height: 163.0,
+                                  child:
+                                  Center(child: Text("Saldo no fim da semana",
+                                    style: TextStyle(
+                                      fontFamily: 'Ubuntu',
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    color: const Color(0xffffffff),
+                                    gradient: LinearGradient(
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.bottomRight,
+                                        stops: [
+                                          0.1,
+                                          0.5,
+                                          0.8,
+                                        ],
+                                        colors: [
+                                          Colors.redAccent,
+                                          Colors.deepOrange,
+                                          Colors.deepOrangeAccent,
+                                        ]),
+                                    border:
+                                    Border.all(width: 1.0, color: Colors.black12),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: const Color(0x29000000),
+                                          offset: Offset(0, 6),
+                                          blurRadius: 6)
+                                    ],
+                                  ),
+                                )),
+                          ],
+                        )
+                    ),
+                  ],
+                ),
+              ),
+              ],
             ),
           ),
         )
     );
   }
+
+  static List<charts.Series<OrdinalSales, String>> _getTransactions() {
+    final data = [
+      new OrdinalSales('8/5', 8),
+      new OrdinalSales('15/5', 25),
+      new OrdinalSales('22/4', 93),
+      new OrdinalSales('29/5', 75),
+    ];
+
+    return [
+      new charts.Series<OrdinalSales, String>(
+        id: 'Sales',
+        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+        domainFn: (OrdinalSales sales, _) => sales.year,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        data: data,
+      )
+    ];
+  }
+}
+
+class OrdinalSales {
+  final String year;
+  final int sales;
+
+  OrdinalSales(this.year, this.sales);
 }

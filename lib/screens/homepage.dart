@@ -1,3 +1,4 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -31,6 +32,13 @@ class PginaInicial1 extends StatelessWidget {
                     padding: EdgeInsets.all(0.0),
                     child: Center( child: Text( 'Configurações', textAlign: TextAlign.left, style: TextStyle(color: Colors.white, fontSize: 20),),),
                   ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.attach_money),
+                  title: Text('Gerar novos depósitos'),
+                  onTap: () {
+                    Fluttertoast.showToast(msg: 'Depósitos efetuados', toastLength: Toast.LENGTH_SHORT);
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.subject),
@@ -164,9 +172,11 @@ class PginaInicial1 extends StatelessWidget {
               Container(
                 width: 269.0,
                 height: 142.0,
-                decoration: BoxDecoration(
-                  color: const Color(0xffffffff),
-                  border: Border.all(width: 1.0, color: const Color(0xff707070)),
+                child: Carousel(
+                  images: [
+                    ExactAssetImage('assets/images/chart3.png'),
+                  ],
+                  showIndicator: false,
                 ),
               ),
             ),
@@ -179,47 +189,10 @@ class PginaInicial1 extends StatelessWidget {
                 height: 53.0,
                 decoration: BoxDecoration(
                   color: const Color(0xffffffff),
-                  border: Border.all(width: 1.0, color: const Color(0xff707070)),
+                  //border: Border.all(width: 1.0, color: const Color(0xff707070)),
                 ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(160.0, 232.0),
-              child:
-              // Adobe XD layer: 'Bola loc' (shape)
-              Container(
-                width: 8.0,
-                height: 8.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.elliptical(4.0, 4.0)),
-                  color: const Color(0xffff8f00),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(192.0, 232.0),
-              child:
-              // Adobe XD layer: 'Bola loc' (shape)
-              Container(
-                width: 8.0,
-                height: 8.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.elliptical(4.0, 4.0)),
-                  color: const Color(0xffd9d9d9),
-                ),
-              ),
-            ),
-            Transform.translate(
-              offset: Offset(176.0, 232.0),
-              child:
-              // Adobe XD layer: 'Bola loc' (shape)
-              Container(
-                width: 8.0,
-                height: 8.0,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.elliptical(4.0, 4.0)),
-                  color: const Color(0xffd9d9d9),
-                ),
+                child:
+                Center(child: Text("R\$72,00", style: TextStyle(color: Colors.green, fontSize: 40, fontFamily: 'Roboto'))),
               ),
             ),
             // Allow me to click trough the svg
